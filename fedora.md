@@ -177,3 +177,8 @@ UUID="c2dbc0c5-a8fc-439e-aa93-51b0a61372e8" /mnt/ntfs/ ntfs nls-utf8,umask-0222,
          2：等数字为1的自检完成后，再进行自检
 ```
 ### 5.1 自定义systemd服务
+`usr/lib/systemd/system`
+
+### 5.2 开机启动脚本
+`crontab -e`
+`@reboot /path/to/your/script.sh`
