@@ -123,6 +123,10 @@ gnome-shell-extension list
 [WhiteSur Shell](https://www.gnome-look.org/p/1403327)
 [McMojave](https://www.gnome-look.org/p/1275087/)
 ```
+tar -xf file_name.tar -C /target/directory
+```
+
+```
 dnf config-manager --set-disabled
 dnf config-manager --set-enabled
 screenfetch
