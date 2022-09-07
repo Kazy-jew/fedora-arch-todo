@@ -204,6 +204,11 @@ UUID="c2dbc0c5-a8fc-439e-aa93-51b0a61372e8" /mnt/ntfs/ ntfs nls-utf8,umask-0222,
 `crontab -e`
 `@reboot /path/to/your/script.sh`
 
+### 5.3 输入法
+从`ibus`切换到`fcitix5`，参见[这里](https://insidelinuxdev.net/article/a0cr1x.html)和[这里](https://yanqiyu.info/2020/11/06/fcitx5-fedora-updated/)
+```
+$ sudo dnf install fcitx5 kcm-fcitx5 fcitx5-chinese-addons fcitx5-table-extra fcitx5-configtool fcitx5-autostart
+```
 
 ## EX.其他
 
