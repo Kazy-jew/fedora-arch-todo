@@ -1,11 +1,13 @@
 # 安装完Archlinux之后。。。
 
 ## 0. 安装
-本来以为安装会很复杂，不过可能是之前折腾过Fedora很多次了，感觉并没有想像中的困难，下载镜像[制作启动U盘](https://wiki.archlinux.org/title/USB_flash_installation_medium#Using_basic_command_line_utilities)后(我直接在Fedora下用的dd命令)，按照[Installation guide](https://wiki.archlinux.org/title/Installation_guide)一步一步来就可以了, 重新熟悉了下fdisk的磁盘分区，发现现在fdisk已经可以支持GPT的磁盘了，引导的话现在应该基本都是UEFI了，不会像以前的win8刚出来的时候，出现用传统模式装在UEFI上，结果装完fedora电脑就开不了机的情况。这里直接按照Fedora的默认的分区模式，磁盘分了三个区，`\boot`，`\boot\efi`，`\home`，由于内存有64GiB，没有创建`\swap`分区，分区完用`mkfs`格式化后结构如下：
+本来以为安装会很复杂，不过可能是之前折腾过Fedora很多次了，感觉并没有想像中的困难，下载镜像[制作启动U盘](https://wiki.archlinux.org/title/USB_flash_installation_medium#Using_basic_command_line_utilities)后(我直接在Fedora下用的dd命令)，按照[Installation guide](https://wiki.archlinux.org/title/Installation_guide)一步一步来就可以了, 重新熟悉了下fdisk的磁盘分区，发现现在fdisk已经可以支持GPT的磁盘了，引导的话现在应该基本都是UEFI了，不会像以前的win8刚出来的时候，出现用传统模式装在UEFI上，结果装完fedora电脑就开不了机的情况。这里直接按照Fedora的默认的分区模式分了三个区，`\boot`，`\boot\efi`，`\home`，由于内存有64GiB，没有创建`\swap`分区，分区完用`mkfs`格式化后结构如下：
 ```
-\nvmes0\1        \boot
-\nvmes0\2        \boot\efi
-\nvmes0\3        \home
+nvme2n1        259:1    0   1.8T  0 disk  
+├─nvme2n1p1    259:2    0   600M  0 part  /boot/efi
+├─nvme2n1p2    259:3    0     1G  0 part  /boot
+└─nvme2n1p3    259:4    0   527G  0 part  /home
+                                          /
 ```
 不过途中还是有个小插曲，根据[安装指导](https://wiki.archlinux.org/title/Installation_guide#Mount_the_file_systems), 新系统根目录要挂载在Live OS的`\mnt`下，我第一次安装的时候没有创建文件夹，直接挂在了根目录下`\`，结果后续运行`# pacstrap /mnt base linux linux-firmware`安装新系统时目录结构冲突，导至新系统装不上，只好乖乖地完全按照安装指导重来了一次，不过这里挂载点只要不冲突应该是随意的，`\mnt\abcde`或者`\666`什么的结果应该都是一样的。安装完，重启，进Fedora更新了下`grub.cfg`，找到Archlinux的入口，进入，输入用户密码，登录成功，
 基本的安装也就结束了。不过~~折腾~~美化之路才刚刚开始。。。
