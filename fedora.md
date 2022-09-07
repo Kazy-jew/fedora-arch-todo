@@ -1,7 +1,8 @@
 # 安装完fedora后要做的事
 
+![效果图](Images/Screenshot%20from%202022-09-08%2004-10-39.png)
 ## 0.代理
-[pip相关issue](https://zhuanlan.zhihu.com/p/350015032)和[这里](https://github.com/pypa/pip/issues/9216)
+[pip相关issue](https://zhuanlan.zhihu.com/p/350015032)和[这里](https://github.com/pypa/pip/issues/9216), [pip相关issue备份](https://web.archive.org/web/20220907164331/https://zhuanlan.zhihu.com/p/350015032)
 **0.1 python**
 ```
 from urllib.request import getproxies
@@ -50,7 +51,7 @@ GRUB_HIDDEN_TIMEOUT
 ```
 GRUB_TERMINAL_OUTPUT="gfxterm"
 ```
-屏幕分辨率, default为1024x768
+设置屏幕分辨率, default为1024x768
 ```
 GRUB_GFXMODE=1024x768x32,auto
 ```
@@ -122,6 +123,17 @@ gnome-shell-extension list
 [mcOS Mojave for Plank Dock](https://www.gnome-look.org/p/1248226/)
 [WhiteSur Shell](https://www.gnome-look.org/p/1403327)
 [McMojave](https://www.gnome-look.org/p/1275087/)
+[Layan gtk theme](https://www.gnome-look.org/p/1309214/)
+[WhiteSur Gtk Theme](https://www.gnome-look.org/p/1403328/)
+[Ant Themes](https://www.gnome-look.org/p/1099856/)
+
+```
+tar -xf file.name.tar -C /usr/share/themes
+```
+```
+for f in *.tar; do tar xf "$f"; done
+```
+
 ```
 tar -xf file_name.tar -C /target/directory
 ```
@@ -133,11 +145,21 @@ screenfetch
 dnf install gnome-tweaks
 ```
 ### 4.4 窗口开启最小化/最大化按钮
+```
+gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
+```
 
 ### 4.5 缩放
 * wayland 开启 fractional scaling feature⸸:
   `gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"` 
     ⸸<span style="color:red"><font size=2> 会导致字体显示模糊, 建议切换到xorg</font></span>
+
+### 4.6 更改terminal/nautilus窗口打开的位置
+```
+gnome-terminal --geometry=100x35+10+10
+```
+  ⸸<span style="color:red"><font size=2> 尝试后发现只能改大小不能更改位置</font></span>
+CompizConfig Settings Manager (CCSM)
 
 ## 5.系统相关
 
@@ -181,3 +203,19 @@ UUID="c2dbc0c5-a8fc-439e-aa93-51b0a61372e8" /mnt/ntfs/ ntfs nls-utf8,umask-0222,
          2：等数字为1的自检完成后，再进行自检
 ```
 ### 5.1 自定义systemd服务
+`usr/lib/systemd/system`
+
+### 5.2 开机启动脚本
+`crontab -e`
+`@reboot /path/to/your/script.sh`
+
+### 5.3 输入法
+从`ibus`切换到`fcitix5`，参见[这里](https://insidelinuxdev.net/article/a0cr1x.html)和[这里](https://yanqiyu.info/2020/11/06/fcitx5-fedora-updated/)
+```
+$ sudo dnf install fcitx5 kcm-fcitx5 fcitx5-chinese-addons fcitx5-table-extra fcitx5-configtool fcitx5-autostart
+```
+
+## EX.其他
+
+### ex1.git
+windows下基本都是用一些图形化的客户端(fork, github desktop等等), 由于linux本身集成了git而且图形化的客户端都比较一般，因而列举下常用的命令。
