@@ -50,7 +50,7 @@ GRUB_HIDDEN_TIMEOUT
 ```
 GRUB_TERMINAL_OUTPUT="gfxterm"
 ```
-屏幕分辨率, default为1024x768
+设置屏幕分辨率, default为1024x768
 ```
 GRUB_GFXMODE=1024x768x32,auto
 ```
@@ -132,11 +132,21 @@ screenfetch
 dnf install gnome-tweaks
 ```
 ### 4.4 窗口开启最小化/最大化按钮
+```
+gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
+```
 
 ### 4.5 缩放
 * wayland 开启 fractional scaling feature⸸:
   `gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"` 
     ⸸<span style="color:red"><font size=2> 会导致字体显示模糊, 建议切换到xorg</font></span>
+
+### 4.6 更改terminal/nautilus窗口打开的位置
+```
+gnome-terminal --geometry=100x35+10+10
+```
+  ⸸<span style="color:red"><font size=2> 尝试后发现只能改大小不能更改位置</font></span>
+CompizConfig Settings Manager (CCSM)
 
 ## 5.系统相关
 
@@ -185,3 +195,9 @@ UUID="c2dbc0c5-a8fc-439e-aa93-51b0a61372e8" /mnt/ntfs/ ntfs nls-utf8,umask-0222,
 ### 5.2 开机启动脚本
 `crontab -e`
 `@reboot /path/to/your/script.sh`
+
+
+## EX.其他
+
+### ex1.git
+windows下基本都是用一些图形化的客户端(fork, github desktop等等), 由于linux本身集成了git而且图形化的客户端都比较一般，因而列举下常用的命令。
