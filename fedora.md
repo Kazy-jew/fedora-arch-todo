@@ -1,7 +1,7 @@
 # 安装完fedora后要做的事
 
 ## 0.代理
-[pip相关issue](https://zhuanlan.zhihu.com/p/350015032)和[这里](https://github.com/pypa/pip/issues/9216)
+[pip相关issue](https://zhuanlan.zhihu.com/p/350015032)和[这里](https://github.com/pypa/pip/issues/9216), [pip相关issue备份](https://web.archive.org/web/20220907164331/https://zhuanlan.zhihu.com/p/350015032)
 **0.1 python**
 ```
 from urllib.request import getproxies
