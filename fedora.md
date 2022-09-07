@@ -122,6 +122,9 @@ gnome-shell-extension list
 [mcOS Mojave for Plank Dock](https://www.gnome-look.org/p/1248226/)
 [WhiteSur Shell](https://www.gnome-look.org/p/1403327)
 [McMojave](https://www.gnome-look.org/p/1275087/)
+[Layan gtk theme](https://www.gnome-look.org/p/1309214/)
+[WhiteSur Gtk Theme](https://www.gnome-look.org/p/1403328/)
+[Ant Themes](https://www.gnome-look.org/p/1099856/)
 ```
 dnf config-manager --set-disabled
 dnf config-manager --set-enabled
