@@ -125,6 +125,14 @@ gnome-shell-extension list
 [Layan gtk theme](https://www.gnome-look.org/p/1309214/)
 [WhiteSur Gtk Theme](https://www.gnome-look.org/p/1403328/)
 [Ant Themes](https://www.gnome-look.org/p/1099856/)
+
+```
+tar -xf file.name.tar -C /usr/share/themes
+```
+```
+for f in *.tar; do tar xf "$f"; done
+```
+
 ```
 dnf config-manager --set-disabled
 dnf config-manager --set-enabled
