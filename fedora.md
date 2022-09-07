@@ -131,7 +131,7 @@ gnome-shell-extension list
 tar -xf file.name.tar -C /usr/share/themes
 ```
 ```
-for f in *.tar; do tar xf "$f"; done
+for f in *.tar.xz; do tar -xf "$f" -C /usr/share/themes --overwrite; done
 ```
 
 ```
