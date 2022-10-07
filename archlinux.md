@@ -26,3 +26,6 @@ nvme2n1        259:1    0   1.8T  0 disk
 
 
 ### 1.2 Gnome
+
+#### 1.2.1 bash color
+can use [this](https://bashrcgenerator.com) to customize the hostname style
