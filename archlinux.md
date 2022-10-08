@@ -31,3 +31,6 @@ nvme2n1        259:1    0   1.8T  0 disk
 Fedora里的fedy提供了更改终端的颜色选项，但是不知道原理，搜索了下发现是修改`PS1`。
 可以用 [这里](https://bashrcgenerator.com) 的工具生成想要的代码再添加到`.bashrc`里;
 `root`还需添加一行`[[ -f ~/.bashrc ]] && . ~/.bashrc`到`.bash_profile`或者`.profile`里使配置默认生效。
+
+#### 1.2.2 输入法Fcitx5
+按照 [archwiki](https://wiki.archlinux.org/title/Fcitx5_(简体中文)) 来就好
