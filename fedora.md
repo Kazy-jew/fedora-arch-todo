@@ -164,10 +164,17 @@ CompizConfig Settings Manager (CCSM)
 ## 5.系统相关
 
 ### 5.0 和windows共存
-__关闭windows的fastboot和hibernate, 至少关闭fastboot,如果有以下问题__
+
+#### 5.0.1 关闭windows的fastboot和hibernate, 至少关闭fastboot,如果有以下问题
 * wifi模块未加载(`gnome`设置里网络没有wifi选项,`terminal`输入`lspci | grep Network`可以看到wifi相关硬件,但是`rfkill list`或`iwctl`-`device list`没有相关设备
 * 声音模块,同上
 * 写入ntfs文件系统的数据丢失(一般不会,`ntfs-3g`在windows的休眠状态下会挂载为只读)
+
+#### 5.0.2 时间设置
+系统开机时都会首先读取主板上的硬件时间作为系统时间， 所不同的是，windows默认硬件时间为本地时间，而linux一般会默认硬件时间为UTC时间 (然而fedora 36似乎默认的也是本地时间，不知道是不是因为在安装时检测到了Windows系统后作的更改）。一般为了不变性更推荐使用UTC做为默认时间。
+Windows修改为UTC的方法可参考[archwiki](https://wiki.archlinux.org/title/System_time#UTC_in_Microsoft_Windows)，Fedora可以用`timedatectl`查看一下，
+若`RTC in local TZ`行的值为真，则用`timedatectl set-local-rtc false`修改即可
+
 ### 5.1 开机加载硬盘
 * 一些相关命令`gdisk`,`parted`,`lsblk`,`df`等等
 * 列出(所有)硬盘列表`fdisk -l /dev/sda`

@@ -1,5 +1,5 @@
 # 安装完Archlinux之后。。。
-
+![效果图](Images/Screenshot%20from%202022-10-08%2013-16-28.png)
 ## 0. 安装
 本来以为安装会很复杂，不过可能是之前折腾过Fedora很多次了，感觉并没有想像中的困难，下载镜像[制作启动U盘](https://wiki.archlinux.org/title/USB_flash_installation_medium#Using_basic_command_line_utilities)后(我直接在Fedora下用的dd命令)，按照[Installation guide](https://wiki.archlinux.org/title/Installation_guide)一步一步来就可以了, 重新熟悉了下fdisk的磁盘分区，发现现在fdisk已经可以支持GPT的磁盘了，引导的话现在应该基本都是UEFI了，不会像以前的win8刚出来的时候，出现用传统模式装在UEFI上，结果装完fedora电脑就开不了机的情况。这里直接按照Fedora的默认的分区模式分了三个区，`\boot`，`\boot\efi`，`\home`，由于内存有64GiB，没有创建`\swap`分区，分区完用`mkfs`格式化后结构如下：
 ```
@@ -28,9 +28,16 @@ nvme2n1        259:1    0   1.8T  0 disk
 ### 1.2 Gnome
 
 #### 1.2.1 bash color
-Fedora里的fedy提供了更改终端的颜色选项，但是不知道原理，搜索了下发现是修改`PS1`。
+Fedora里的fedy提供了更改终端的颜色选项，但是不知道原理，搜索了下发现是修改`PS1`(然而fedy并没有更改`.bashrc`或者`.bash_profile`，`.profile`之类的文件，不知道其他哪里还可以设置)。
 可以用 [这里](https://bashrcgenerator.com) 的工具生成想要的代码再添加到`.bashrc`里;
 `root`还需添加一行`[[ -f ~/.bashrc ]] && . ~/.bashrc`到`.bash_profile`或者`.profile`里使配置默认生效。
 
 #### 1.2.2 输入法Fcitx5
 按照 [archwiki](https://wiki.archlinux.org/title/Fcitx5_(简体中文)) 来就好
+
+
+__2022-10-10:__
+安装anaconda后用`conda activate`激活环境（或者用`conda`安装/升级下软件）后，`conda`会将`terminal`里原有的PS1覆盖, 只显示`$CONDA_DEFAULT_ENV`一个变量的输出，这个是新版本`conda`更改了shebang导致的一个bug，相关讨论见于 [这里](https://github.com/conda/conda/issues/11885) 以及 [这里](https://github.com/conda/conda/issues/11893) (这个bug几天前就发现了，但是搞了几天后才搜索到这个帖子，就差个关键词。。。)
+
+临时方案：
+`conda init bash`
